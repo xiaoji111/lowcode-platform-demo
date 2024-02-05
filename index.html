@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+      user-scalable="0"
+    />
+    <title>Neo</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+    <script>
+      var reg = /(http|https):\/\/([^\/]+)\//i;
+      var _href =
+        window.location.href.match(reg).length > 2 ? window.location.href.match(reg)[2] : '';
+      window.BUILD_ENV = 'prod';
+      if (_href.indexOf('sit-') === 0 || _href.indexOf('localhost') > -1) {
+        window.BUILD_ENV = 'sit';
+      } else if (_href.indexOf('test-') === 0) {
+        window.BUILD_ENV = 'test';
+      } else if (_href.indexOf('pre-') === 0) {
+        window.BUILD_ENV = 'pre';
+      } else if (_href.indexOf('perf-') === 0) {
+        window.BUILD_ENV = 'perf';
+      } else {
+        window.BUILD_ENV = 'prod';
+      }
+      console.log('window.BUILD_ENV: ', window.BUILD_ENV);
+      (function (e, d) {
+        function f() {
+          var b = e.documentElement,
+            c = e.documentElement.clientWidth || e.body.clientWidth;
+          c = Math.max(320, c);
+          a = c ? (Math.min(640, c) / 720) * 100 : 50;
+          a = a.toFixed(2);
+          b.style.fontSize = a + 'px';
+          c = parseFloat(window.getComputedStyle(b).fontSize);
+          parseInt(a) !== parseInt(c) && (b.style.fontSize = (a * a) / c + 'px');
+        }
+        var g = 'orientationchange' in d ? 'orientationchange' : 'resize',
+          a;
+        f();
+        d.addEventListener(g, f, !1);
+        d.rem2px = function (b) {
+          return b * a;
+        };
+        d.px2rem = function (b) {
+          return b / a;
+        };
+      })(document, window);
+    </script>
+    <script>
+      !function(t){
+        function e(){ var e = this || self; e.globalThis = e; delete t.prototype._T_ }
+        "object" != typeof globalThis && (this ? e() : (t.defineProperty(t.prototype, "_T_", {configurable: !0, get: e}), _T_))
+      }(Object)
+      window.global={}
+      window.process = {};
+    </script>
+  </body>
+</html>

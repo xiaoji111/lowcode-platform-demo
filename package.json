@@ -1,0 +1,72 @@
+{
+  "name": "byb-h5-bankcard",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm start",
+    "start": "cross-env BUILD_ENV=local vite --host",
+    "build:test": "cross-env BUILD_ENV=test vite build",
+    "build:sit": "cross-env BUILD_ENV=sit vite build",
+    "build:perf": "cross-env BUILD_ENV=perf vite build",
+    "build:pre": "cross-env BUILD_ENV=pre vite build",
+    "build:prod": "cross-env BUILD_ENV=prod vite build",
+    "build": "cross-env BUILD_ENV=prod vite build",
+    "server": "cross-env BUILD_ENV=prod vite server",
+    "prepare": "husky install"
+  },
+  "author": "",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,scss,less,md,json}": [
+      "prettier --ignore-path  ./.prettierignore --write --loglevel warn"
+    ]
+  },
+  "license": "ISC",
+  "dependencies": {
+    "antd": "^5.4.6",
+    "axios": "^0.24.0",
+    "classnames": "^2.3.2",
+    "dayjs": "^1.10.7",
+    "js-cookie": "^3.0.1",
+    "lodash-es": "^4.17.21",
+    "md5": "^2.3.0",
+    "react": "^17.0.2",
+    "react-color": "^2.19.3",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.11.1",
+    "react-sortablejs": "^6.1.4",
+    "reactcss": "^1.2.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.1",
+    "@types/lodash-es": "^4.17.5",
+    "@types/md5": "^2.3.1",
+    "@types/node": "^16.11.9",
+    "@types/react": "^17.0.35",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vitejs/plugin-legacy": "^4.0.1",
+    "@vitejs/plugin-react": "^3.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "less": "^4.1.2",
+    "lint-staged": "^12.0.2",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4",
+    "vite": "^4.1.4"
+  }
+}
